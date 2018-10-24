@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_shuffle"
+        android:icon="@drawable/ic_shuffle_black_24dp"
+        android:orderInCategory="1"
+        android:title="@string/shuffle_string"/>
+
+    <item
+        android:id="@+id/action_end"
+        android:icon="@drawable/ic_pause_black_24dp"
+        android:orderInCategory="2"
+        android:title="@string/end_string"/>
+
+    <item
+        android:id="@+id/action_play"
+        android:icon="@drawable/ic_play_arrow_black_24dp"
+        android:orderInCategory="3"
+        android:title="@string/play_string"/>
+</menu>
