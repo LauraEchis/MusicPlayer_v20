@@ -42,13 +42,20 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+
+// MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE is an
+// app-defined int constant
+
+                return;
+            }
+        }
         Intent intent = new Intent();
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-        ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        songView = findViewById(R.id.song_list);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         songList = new ArrayList<>();
 
         getSongList();
@@ -157,6 +164,8 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
                 String thisTitle = musicCursor.getString(titleColumn);
                 String thisArtist = musicCursor.getString(artistColumn);
                 songList.add(new Song(thisId, thisTitle, thisArtist));
+
+
             }
             while (musicCursor.moveToNext());
         }

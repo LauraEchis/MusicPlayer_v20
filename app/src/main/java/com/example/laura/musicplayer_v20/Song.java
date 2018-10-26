@@ -5,8 +5,8 @@ import android.os.Parcelable;
 
 public class Song implements Parcelable {
     private long id;
-    private String title;
-    private String artist;
+    private String title = "";
+    private String artist = "";
 
     public Song(long songID, String songTitle, String songArtist) {
         id = songID;
@@ -18,9 +18,6 @@ public class Song implements Parcelable {
     public Song() {
 
     }
-
-
-
     @Override
     public int describeContents() {
         return 0;
