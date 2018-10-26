@@ -3,4 +3,5 @@
     <string name="play_string">Play</string>
     <string name="end_string">End</string>
     <string name="shuffle_string">Shuffle</string>
+    <string name="logview">TextView</string>
 </resources>
